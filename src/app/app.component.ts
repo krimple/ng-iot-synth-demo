@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
+import { PipelineService } from './services/pipeline';
+import {SimpleLoggerService} from './services/simple.logger.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'polysynth-root',
+  templateUrl: 'app.component.html'
 })
 export class AppComponent {
-  title = 'app';
+  constructor(logger: SimpleLoggerService, pipelineService: PipelineService) {
+    logger.logEnabled = true;
+    pipelineService.begin();
+  }
 }
